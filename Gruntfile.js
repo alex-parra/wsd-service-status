@@ -48,9 +48,22 @@ module.exports = function(grunt) {
       },
     },
 
-    uglify: {
+    terser: {
+      options: {
+        sourceMap: true,
+      },
       build: {
-        src: ['src/js/*.js'],
+        src: [
+          'src/js/dateFormat.js',
+          'src/js/getTemplate.js',
+          'src/js/getStatusClass.js',
+          'src/js/getAlertsClass.js',
+          'src/js/renderChecks.js',
+          'src/js/renderNodes.js',
+          'src/js/servicesChart.js',
+          'src/js/nodesChart.js',
+          'src/js/main.js',
+        ],
         dest: 'public/js/script.min.js',
       },
     },
@@ -62,7 +75,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: 'src/js/**/*.js',
-        tasks: ['uglify'],
+        tasks: ['terser'],
       },
     },
   });
@@ -71,7 +84,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-terser');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['watch']);

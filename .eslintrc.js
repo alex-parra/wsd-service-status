@@ -10,6 +10,7 @@ module.exports = {
   extends: ['eslint:recommended'],
   plugins: [],
   rules: {
+    'max-len': ['error', { code: 120 }],
     indent: ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],

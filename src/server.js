@@ -22,13 +22,24 @@ app.use(cors());
 app.use(nocache());
 require('./helmet')(app);
 
-// Routes
-app.get('/', (req, res) => {
-  api.authenticate();
+// Main route
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
+// Report json
+app.get('/report', function(req, res) {
+  api
+    .getReport()
+    .then(function(report) {
+      res.json(report);
+    })
+    .catch(function(error) {
+      res.status(500).json({ error: error.message });
+    });
+});
+
 // Launch
-app.listen(config.port, () => {
+app.listen(config.port, function() {
   debug('Listening on port %s...', config.port);
 });

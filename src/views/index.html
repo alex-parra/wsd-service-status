@@ -4,10 +4,112 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WSD Service Status</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.min.css"
+      integrity="sha512-cznfNokevSG7QPA5dZepud8taylLdvgr0lDqw/FEZIhluFsSwyvS81CMnRdrNSKwbsmc43LtRd2/WMQV+Z85AQ=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
   <body>
-    <h1>WSD Service Status</h1>
+    <header>
+      <div class="site-info">
+        <h1 class="page-title">
+          <small><img width="34px" src="logo.svg" alt="WallStreetDocs logo" /> WallStreetDocs</small>
+          Service Status
+        </h1>
+        <ul class="report-infos list-unstyled">
+          <li><span>Report #:</span> <strong data-role="reportId">&nbsp;</strong></li>
+          <li><span>Generated on:</span> <strong data-role="reportDate">&nbsp;</strong></li>
+        </ul>
+      </div>
+
+      <div class="stats">
+        <div class="servicesHealth chart">
+          <span data-role="servicesHealth"></span>
+          <span class="donutBigNum" data-role="servicesCount"></span>
+        </div>
+        <div class="nodesCount bigNum">
+          <span data-role="nodesHealth"></span>
+          <span class="donutBigNum" data-role="nodesCount"></span>
+        </div>
+        <div class="totalAlerts bigNum">
+          <span data-role="alertsCount"></span>
+          <small>Total Alerts</small>
+        </div>
+      </div>
+
+      <div class="report-services-header d-flex align-items-center">
+        <h3>Services</h3>
+        <input type="text" class="form-control" data-role="filter-services" placeholder="Search services..." />
+      </div>
+    </header>
+
+    <main>
+      <div class="report-services">
+        <ol class="list-unstyled" data-role="services">
+          <li class="loading">
+            <div class="spinner-border text-light" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </main>
+
+    <template id="serviceCard">
+      <li data-role="service-card">
+        <div class="d-flex align-items-center">
+          <h4>HOST_NAME</h4>
+          <div>Alerts: <span class="badge ALERTS_CLASS">ALERTS_COUNT</span></div>
+        </div>
+        <p><small class="badge STATUS_CLASS">STATUS_CODE</small> STATUS_TEXT</p>
+      </li>
+    </template>
+
+    <template id="serviceModal">
+      <h2 class="service-title">
+        <small>Service Detail</small>
+        HOST_NAME
+      </h2>
+      <div class="service-status"><span class="badge STATUS_CLASS">STATUS_CODE</span> STATUS_TEXT</div>
+      <div class="service-nodes">
+        <ol class="list-unstyled" data-role="service-nodes">
+          SERVICE_NODES
+        </ol>
+      </div>
+    </template>
+
+    <template id="serviceModalNode">
+      <li class="service-node">
+        <div class="service-node-title">
+          <h4>NODE_NAME</h4>
+          <span class="badge NODE_STATUS_CLASS">NODE_STATUS_CODE</span>
+        </div>
+        <ol class="service-node-checks list-unstyled">
+          NODE_CHECKS
+        </ol>
+      </li>
+    </template>
+
+    <template id="serviceModalNodeCheck">
+      <li class="service-node-check NODE_CHECK_STATE">
+        <h5>NODE_CHECK_NAME</h5>
+        <p>NODE_CHECK_MESSAGE</p>
+      </li>
+    </template>
+
+    <div class="service-modal modal fade">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-body"></div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
@@ -17,6 +119,16 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
       integrity="sha512-I5TkutApDjnWuX+smLIPZNhw+LhTd8WrQhdCKsxCFRSvhFx2km8ZfEpNIhF9nq04msHhOkE8BMOBj5QE07yhMA=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"
+      integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.min.js"
+      integrity="sha512-bW79RVtvrrTS2QzmDsJeh62Nt4b/RjYlYvi2iEmkXPhzzbXMx69JT/zHgiGcL1Tk5nkLMTF6xkEUuynTkdC9PQ=="
       crossorigin="anonymous"
     ></script>
     <script src="js/script.min.js"></script>

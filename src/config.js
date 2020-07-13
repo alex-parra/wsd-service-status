@@ -9,5 +9,6 @@ module.exports = {
     grantType: process.env.API_GRANT_TYPE,
     clientId: process.env.API_CLIENT_ID,
     clientSecret: process.env.API_CLIENT_SECRET,
+    reportLifetime: process.env.API_REPORT_LIFETIME,
   },
 };

@@ -11,7 +11,7 @@ module.exports = function(app) {
         directives: {
           defaultSrc: ["'self'"], // eslint-disable-line quotes
           imgSrc: ["'self'"], // eslint-disable-line quotes
-          styleSrc: ["'self'"], // eslint-disable-line quotes
+          styleSrc: ["'self'", "'unsafe-inline'", 'cdnjs.cloudflare.com'], // eslint-disable-line quotes
           scriptSrc: ["'self'", 'cdnjs.cloudflare.com'], // eslint-disable-line quotes
         },
       },

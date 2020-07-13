@@ -1,0 +1,32 @@
+.stats {
+  display: flex;
+  // align-items: flex-end;
+  margin: 0 -1.5rem;
+
+  > div {
+    position: relative;
+    flex: 1;
+    padding: 1rem 0;
+    background-color: rgba(#000, 0.1);
+    border-radius: 4px;
+    margin: 0 0.5rem;
+  }
+
+  .bigNum {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    > span {
+      display: block;
+      font-size: 60px;
+      line-height: 1;
+      font-weight: bold;
+    }
+    > small {
+      font-size: 14px;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+  }
+}

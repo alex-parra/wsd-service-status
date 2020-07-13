@@ -1,0 +1,41 @@
+.c3 svg {
+  width: 100% !important;
+  height: auto;
+}
+
+.c3-chart-arcs-title {
+  color: #fff;
+  fill: currentColor;
+  font-family: inherit;
+}
+
+.c3-chart-arc path {
+  stroke: #222;
+}
+
+.c3-legend-item text {
+  color: #fff;
+  fill: currentColor;
+}
+
+.c3-tooltip-container {
+  color: #222;
+}
+
+.c3-tooltip tr,
+.c3-tooltip td {
+  border: none;
+}
+
+.c3-chart-arcs-title {
+  transform: translate(0, 15%);
+}
+
+.donutBigNum {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  font-size: 40px;
+  font-weight: bold;
+}

@@ -1,0 +1,27 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*:first-child {
+  margin-top: 0;
+}
+
+*:last-child {
+  margin-bottom: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  > header {
+    flex: 0 0 auto;
+  }
+  > main {
+    flex: 1;
+    overflow: auto;
+    padding: 0 2rem;
+  }
+}
