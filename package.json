@@ -13,7 +13,7 @@
     "mocha": "6.2.3",
     "morgan": "1.10.0",
     "nocache": "^2.1.0",
-    "node-fetch": "2.6.0"
+    "node-fetch": "2.6.1"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.5",
